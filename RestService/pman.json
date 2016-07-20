@@ -1,0 +1,17 @@
+{
+  "name": "Vanner/RestService",
+  "dependencies": {
+    "Vanner/FriendModel": true,
+    "Vanner/UserModel": true,
+    "codecraft/pman": true,
+    "codecraft/cloud": true
+  },
+  "publish": [
+    "? docker rm -f Vanner-RestService-US",
+    "? docker rm -f Vanner-RestService-UK",
+    "? docker rmi vanner/rest-service",
+    "sbt compile docker",
+    "docker run -d -p 9000:9000 -m=2147483648 -e JAVA_OPTS='-Xmx2g' -e CLOUD_A=5672 -e CLOUD_B=5672 --name Vanner-RestService-US vanner/rest-service",
+    "docker run -d -p 9001:9000 -m=2147483648 -e JAVA_OPTS='-Xmx2g' -e CLOUD_A=5673 -e CLOUD_B=5672 --name Vanner-RestService-UK vanner/rest-service"
+  ]
+}

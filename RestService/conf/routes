@@ -1,0 +1,17 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# An example controller showing a sample home page
+GET     /api/user/:id                   controllers.UserController.get(id: String)
+GET     /api/user                       controllers.UserController.list
+
+POST    /api/user                       controllers.UserController.post
+POST    /api/friends                    controllers.FriendController.post
+GET     /api/friends/:id                controllers.FriendController.list(id: String)
+PUT     /api/user                       controllers.UserController.put
+# An example controller showing how to use dependency injection
+# An example controller showing how to write asynchronous code
+
+# Map static resources from the /public folder to the /assets URL path
+#GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
